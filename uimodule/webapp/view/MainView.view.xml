@@ -9,7 +9,7 @@
                 <Page id="page" title="{i18n>title}">
                    <content>
                    
-                        <Label text="this is a label.blablabla"></Label>
+                        <Label text="Calendar with Holidays for Germany/Baden Württemberg"></Label>
                         <u:Calendar
                             id="calFirst"
 

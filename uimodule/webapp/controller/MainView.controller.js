@@ -11,23 +11,29 @@ sap.ui.define(
             onInit: function () {
                 //alert(this.getView().byId("calFirst").getId());
                 calendar = this.getView().byId("calFirst");
-                addHolidays(2022);
+                const date = new Date();
+                addHolidays(date.getFullYear());
+                calendar.attachStartDateChange(null, () => { addHolidays(calendar.getStartDate().getFullYear()); }, null)
             },
         });
     }
 );
 
+var loadedYears = [];
 function addHolidays(year) {
-    fetch("https://feiertage-api.de/api/?jahr=2022")
-        .then(response => response.json())
-        .then(data => {
-            var bawue = data.BW;
-            Object.keys(bawue).forEach(hdayName => {
-                var hdayData = bawue[hdayName];
-                console.log(hdayName + " : " + hdayData.datum);
-                addHolidayFromString(hdayData.datum, hdayName);
+    if (!loadedYears.includes(year)) {
+        loadedYears.push(year);
+        fetch("https://feiertage-api.de/api/?jahr=" + year)
+            .then(response => response.json())
+            .then(data => {
+                var bawue = data.BW;
+                Object.keys(bawue).forEach(hdayName => {
+                    var hdayData = bawue[hdayName];
+                    console.log(hdayName + " : " + hdayData.datum);
+                    addHolidayFromString(hdayData.datum, hdayName);
+                });
             });
-        });
+    }
 }
 
 function addHolidayFromString(date, tt) {
