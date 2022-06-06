@@ -16,7 +16,7 @@ sap.ui.define(
                 const oModel = new JSONModel(Device);
                 oModel.setDefaultBindingMode("OneWay");
                 return oModel;
-            },
+            }
         };
     }
 );

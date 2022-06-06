@@ -1,9 +1,21 @@
-<mvc:View controllerName="com.mykingdom.simpleSapUi5CalendarApp.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View   controllerName="com.mykingdom.simpleSapUi5CalendarApp.controller.MainView" 
+            xmlns:mvc="sap.ui.core.mvc" 
+            displayBlock="true" 
+            xmlns="sap.m"
+            xmlns:u="sap.ui.unified">
     <Shell id="shell">
         <App id="app">
             <pages>
                 <Page id="page" title="{i18n>title}">
-                    <content />
+                   <content>
+                   
+                        <Label text="this is a label.blablabla"></Label>
+                        <u:Calendar
+                            id="calFirst"
+
+                        />
+                   
+                   </content>
                 </Page>
             </pages>
         </App>
