@@ -13,7 +13,11 @@ sap.ui.define(
                 calendar = this.getView().byId("calFirst");
                 const date = new Date();
                 addHolidays(date.getFullYear());
-                calendar.attachStartDateChange(null, () => { addHolidays(calendar.getStartDate().getFullYear()); }, null)
+                addHolidays(date.getFullYear() + 1);
+                calendar.attachStartDateChange(null, () => {
+                    addHolidays(calendar.getStartDate().getFullYear());
+                    addHolidays(calendar.getStartDate().getFullYear() + 1);
+                }, null)
             },
         });
     }
@@ -29,7 +33,6 @@ function addHolidays(year) {
                 var bawue = data.BW;
                 Object.keys(bawue).forEach(hdayName => {
                     var hdayData = bawue[hdayName];
-                    console.log(hdayName + " : " + hdayData.datum);
                     addHolidayFromString(hdayData.datum, hdayName);
                 });
             });

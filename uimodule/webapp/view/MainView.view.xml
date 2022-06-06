@@ -12,6 +12,8 @@
                         <Label text="Calendar with Holidays for Germany/Baden Württemberg"></Label>
                         <u:Calendar
                             id="calFirst"
+                            width="100%"
+                            months="12"
 
                         />
                    
