@@ -1,6 +1,9 @@
 {
   "name": "simpleSapUi5CalendarApp",
   "version": "0.0.1",
+  "dependencies": {
+    "@ui5/cli": "^2.14.1"
+  },
   "scripts": {
     "start": "ui5 serve --config=uimodule/ui5.yaml  --open index.html",
     "build:ui": "run-s  build:uimodule",
