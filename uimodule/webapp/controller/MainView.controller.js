@@ -23,11 +23,11 @@ sap.ui.define(
     }
 );
 
-let loadedYears = [];
+const loadedYears = [];
 function addHolidays(year) {
     if (!loadedYears.includes(year)) {
         loadedYears.push(year);
-        fetch("https://feiertage-api.de/api/?jahr=" + year)
+        fetch(`https://feiertage-api.de/api/?jahr=${year}`)
             .then(response => response.json())
             .then(data => {
                 const bawue = data.BW;
