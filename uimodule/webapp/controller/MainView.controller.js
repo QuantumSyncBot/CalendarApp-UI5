@@ -1,4 +1,4 @@
-var calendar;
+let calendar;
 sap.ui.define(
     ["./BaseController"],
     /**
@@ -9,7 +9,7 @@ sap.ui.define(
 
         return Controller.extend("com.mykingdom.simpleSapUi5CalendarApp.controller.MainView", {
             onInit: function () {
-                //alert(this.getView().byId("calFirst").getId());
+                // alert(this.getView().byId("calFirst").getId());
                 calendar = this.getView().byId("calFirst");
                 const date = new Date();
                 addHolidays(date.getFullYear());
@@ -23,16 +23,16 @@ sap.ui.define(
     }
 );
 
-var loadedYears = [];
+let loadedYears = [];
 function addHolidays(year) {
     if (!loadedYears.includes(year)) {
         loadedYears.push(year);
         fetch("https://feiertage-api.de/api/?jahr=" + year)
             .then(response => response.json())
             .then(data => {
-                var bawue = data.BW;
+                const bawue = data.BW;
                 Object.keys(bawue).forEach(hdayName => {
-                    var hdayData = bawue[hdayName];
+                    const hdayData = bawue[hdayName];
                     addHolidayFromString(hdayData.datum, hdayName);
                 });
             });
